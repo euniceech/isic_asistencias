@@ -130,15 +130,15 @@ $fecha=date("Y-m-d");
 
     </div>
 
+    <!-- Modal de contraseña -->
+        <?php include'../modales/modalcontra.php'; ?>
     <!-- Modal de carga -->
-        <?php include'../modales/modalCarga.php'; ?>
-    <!-- Modal de carga -->  
+        <?php include'../modales/modalCarga.php'; ?>    
     <!-- Modal de datos -->
         <?php include'../mDatosPersonales/modalDatos.php'; ?>
     <!-- Modal de datos -->
     <!-- Modal de Foto -->
         <?php include'../modales/modalFoto.php'; ?>
-    <!-- Modal de Foto -->
     <!-- Modal de PDF -->
         <?php include'../modales/modalPDF.php'; ?>
     <!-- Modal de PDF -->

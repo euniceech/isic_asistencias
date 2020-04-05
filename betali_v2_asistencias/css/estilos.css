@@ -10,6 +10,12 @@
     --h-sidebar: #2f3640; */
 }
 
+:root {
+    --colorPrimario  : rgb(0, 105, 217);
+    --colorSecundario: #576574;
+    --colorTerciario : #ffffff;
+}
+
 .myJT{
     background:var(--color-base);
     color:var(--letra-color);
@@ -182,6 +188,7 @@ a.article:hover {
     min-height: 100vh;
     transition: all 0.3s;
     border:solid 1px var(--h-sidebar) !important;
+    background: #f7f1e3;
 }
 
 .sidebarCollapse {
@@ -308,6 +315,7 @@ a.article:hover {
 
 .login_box{
     background: var(--color-base);
+    background-color: #40739e;
     padding: 0px;
 }
 
@@ -327,6 +335,7 @@ a.article:hover {
     font-size: 22px;
     margin-bottom: 5px;
     color:var(--h-sidebar);
+    
 }
 
 .lblTitulo{
@@ -338,12 +347,14 @@ a.article:hover {
 .login-page,
 .register-page {
  background: var(--letra-base);
+ 
 }
 
 .login-box,
 .register-box {
  width: 500px;
  margin: 7% auto;
+ background: #b2bec3;
 }
 
 @media (max-width: 768px) {
@@ -403,4 +414,57 @@ a.article:hover {
     background-color:#3498db;
     opacity:1;filter:"alpha(opacity=100)";
     -ms-filter:"alpha(opacity=100)";
+}
+
+.modalcontra{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.81); 
+    display: none;
+
+}
+
+
+.invalid {
+    background:url(../images/cancel.png) no-repeat 0 50%;
+    padding-left:22px;
+    line-height:24px;
+    color:#ec3f41;
+}
+.valid {
+    background:url(../images/accept.png) no-repeat 0 50%;
+    padding-left:22px;
+    line-height:24px;
+    color:#3a7d34;
+}
+
+div.pie{
+    border    : 1px solid #ccc;
+    margin    : 0px,0px,0px,10px;
+    padding   : 0px 10px 0px 12px;
+    text-align: right;
+}
+
+div.encabezado{
+    margin    : 0px,0px,7px;
+    padding   : 7px 0px 7px 7px;
+    border    : 1px solid var(--colorPrimario);
+	background: var(--colorPrimario);
+	color     : var(--colorTerciario);
+    font-size : 18px;
+}
+
+div.cuerpo{
+    border-left : 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    padding     : 12px;
+}
+
+label.letra{
+    color: var(--colorPrimario);
+}
+
+h5.letra{
+    color: var(--colorPrimario);
 }

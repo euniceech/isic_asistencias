@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : ITLINARES
-Source Server Version : 50051
+Source Server         : localhost
+Source Server Version : 50505
 Source Host           : localhost:3306
 Source Database       : beta
 
 Target Server Type    : MYSQL
-Target Server Version : 50051
+Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2020-04-01 16:47:43
+Date: 2020-04-02 00:51:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,22 +20,22 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `datos`;
 CREATE TABLE `datos` (
-  `id_datos` int(11) NOT NULL auto_increment,
-  `clave` int(255) default NULL,
-  `nombre` text,
-  `ap_paterno` text,
-  `ap_materno` text,
-  `fecha_nac` date default NULL,
-  `correo` text,
-  `curp` text,
-  `domicilio` text,
-  `sexo` text,
-  `id_ecivil` tinytext,
-  `fecha_registro` date default NULL,
-  `hora_registro` time default NULL,
-  `activo` tinyint(1) default NULL,
-  PRIMARY KEY  (`id_datos`)
-) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+  `id_datos` int(11) NOT NULL AUTO_INCREMENT,
+  `clave` int(255) DEFAULT NULL,
+  `nombre` text DEFAULT NULL,
+  `ap_paterno` text DEFAULT NULL,
+  `ap_materno` text DEFAULT NULL,
+  `fecha_nac` date DEFAULT NULL,
+  `correo` text DEFAULT NULL,
+  `curp` text DEFAULT NULL,
+  `domicilio` text DEFAULT NULL,
+  `sexo` text DEFAULT NULL,
+  `id_ecivil` tinytext DEFAULT NULL,
+  `fecha_registro` date DEFAULT NULL,
+  `hora_registro` time DEFAULT NULL,
+  `activo` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id_datos`)
+) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of datos
@@ -87,20 +87,19 @@ INSERT INTO `datos` VALUES ('44', '115', 'Pablo Adrian', 'Pérez', 'Briseño', '
 INSERT INTO `datos` VALUES ('45', '116', 'Silvia Guadalupe', 'Muñiz', 'Tienda', '1983-06-20', 'stienda@utl.edu.mx', 'MUTS830305HNLRRB08', 'Calle ahuehuete #675 , Colonia Provileon', 'F', '4', '2020-03-23', '14:07:22', '1');
 INSERT INTO `datos` VALUES ('46', '117', 'Víctor Hugo', 'Perez', 'Briseño', '1986-04-18', 'victor@utl.edu.mx', 'PEBP840305HNLRRB08', 'Calle B juares colonia ca,ahcho', 'M', '1', '2020-03-23', '22:05:32', '1');
 INSERT INTO `datos` VALUES ('47', '1569', 'José Manuel', 'Rosales', 'Bravó', '1988-03-03', 'jose@saludnl.gob.mx', 'PEBP840305HNLRRB08', 'Calle Juares # 589 Colonia Arboledas', 'M', '4', '2020-03-24', '09:07:07', '1');
-INSERT INTO `datos` VALUES ('48', '5555555', 'Mauro', 'Robles', 'Martinez', '1998-02-03', 'djdjshd@hotmail.com', 'ROMM930118HNLBRR07', 'Av. Barton #2304 Fracc. Nogalar', 'M', '3', '2020-03-31', '13:10:52', '1');
-INSERT INTO `datos` VALUES ('49', '1010', 'Eunice Estrella', 'Charles', 'Marin', '1997-12-13', 'eunice.970@hotmail.com', 'CAME971213MNLHRN05', 'Calle Abeto #585 Colonia Provileon', 'F', '3', '2020-03-31', '17:02:21', '1');
+INSERT INTO `datos` VALUES ('48', '1777', 'Jose Luis', 'Olvera', 'Escalona', '1997-10-10', 'jolveraescalona@gmail.com', 'OEEL971010HNLLSS03', 'Ebano y Mezquite', 'M', '1', '2020-04-02', '00:47:57', '1');
 
 -- ----------------------------
 -- Table structure for ecivil
 -- ----------------------------
 DROP TABLE IF EXISTS `ecivil`;
 CREATE TABLE `ecivil` (
-  `id_ecivil` int(11) NOT NULL auto_increment,
-  `descripcion` text,
-  `fecha_registro` date default NULL,
-  `hora_registro` time default NULL,
-  `activo` tinyint(4) default NULL,
-  PRIMARY KEY  (`id_ecivil`)
+  `id_ecivil` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` text DEFAULT NULL,
+  `fecha_registro` date DEFAULT NULL,
+  `hora_registro` time DEFAULT NULL,
+  `activo` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id_ecivil`)
 ) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -121,81 +120,37 @@ INSERT INTO `ecivil` VALUES ('9', 'Otros', '2020-03-31', '13:11:18', '1');
 -- ----------------------------
 DROP TABLE IF EXISTS `log`;
 CREATE TABLE `log` (
-  `id_log` int(11) NOT NULL auto_increment,
-  `actividad` text,
-  `usuario_ejecuta` int(11) default NULL,
-  `fecha_registro` date default NULL,
-  `hora_registro` time default NULL,
-  PRIMARY KEY  (`id_log`)
-) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
+  `id_log` int(11) NOT NULL AUTO_INCREMENT,
+  `actividad` text DEFAULT NULL,
+  `usuario_ejecuta` int(11) DEFAULT NULL,
+  `fecha_registro` date DEFAULT NULL,
+  `hora_registro` time DEFAULT NULL,
+  PRIMARY KEY (`id_log`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of log
 -- ----------------------------
-INSERT INTO `log` VALUES ('1', 'Ingreso al sistema', '1', '2020-03-31', '16:18:20');
-INSERT INTO `log` VALUES ('2', 'Salio del sistema', '1', '2020-03-31', '16:55:25');
-INSERT INTO `log` VALUES ('3', 'Ingreso al sistema', '3', '2020-03-31', '16:55:39');
-INSERT INTO `log` VALUES ('4', 'Se insertado un nuevo registro a la tabla Datos Personales', '3', '2020-03-31', '17:02:21');
-INSERT INTO `log` VALUES ('5', 'Salio del sistema', '3', '2020-03-31', '17:03:32');
-INSERT INTO `log` VALUES ('6', 'Ingreso al sistema', '3', '2020-03-31', '17:03:40');
-INSERT INTO `log` VALUES ('7', 'Salio del sistema', '3', '2020-03-31', '17:05:30');
-INSERT INTO `log` VALUES ('8', 'Ingreso al sistema', '3', '2020-03-31', '17:05:55');
-INSERT INTO `log` VALUES ('9', 'Ha cambiado al tema Warning Bootstrap', '3', '2020-03-31', '17:06:20');
-INSERT INTO `log` VALUES ('10', 'Ha cambiado al tema Azul Britanico', '3', '2020-03-31', '17:06:24');
-INSERT INTO `log` VALUES ('11', 'Ha cambiado al tema CHyP', '3', '2020-03-31', '17:06:27');
-INSERT INTO `log` VALUES ('12', 'Ha cambiado al tema German Team', '3', '2020-03-31', '17:06:30');
-INSERT INTO `log` VALUES ('13', 'Ha cambiado al tema Hospital Linares', '3', '2020-03-31', '17:06:34');
-INSERT INTO `log` VALUES ('14', 'Ha cambiado al tema ITLinares', '3', '2020-03-31', '17:06:38');
-INSERT INTO `log` VALUES ('15', 'Ha cambiado al tema ITLinares Alternativo', '3', '2020-03-31', '17:06:42');
-INSERT INTO `log` VALUES ('16', 'Ha cambiado al tema Obscuro Clasico', '3', '2020-03-31', '17:06:45');
-INSERT INTO `log` VALUES ('17', 'Ha cambiado al tema UTLinares', '3', '2020-03-31', '17:06:49');
-INSERT INTO `log` VALUES ('18', 'Ha cambiado al tema Warning Bootstrap', '3', '2020-03-31', '17:06:53');
-INSERT INTO `log` VALUES ('19', 'Ha cambiado al tema Azul Britanico', '3', '2020-03-31', '17:06:58');
-INSERT INTO `log` VALUES ('20', 'Ha cambiado al tema German Team', '3', '2020-03-31', '17:07:01');
-INSERT INTO `log` VALUES ('21', 'Salio del sistema', '3', '2020-03-31', '17:07:10');
-INSERT INTO `log` VALUES ('22', 'Ingreso al sistema', '1', '2020-03-31', '17:08:11');
-INSERT INTO `log` VALUES ('23', 'Salio del sistema', '1', '2020-03-31', '17:08:21');
-INSERT INTO `log` VALUES ('24', 'Ingreso al sistema', '3', '2020-03-31', '17:08:37');
-INSERT INTO `log` VALUES ('25', 'Salio del sistema', '3', '2020-03-31', '17:16:05');
-INSERT INTO `log` VALUES ('26', 'Ingreso al sistema', '3', '2020-03-31', '17:16:19');
-INSERT INTO `log` VALUES ('27', 'Ha cambiado al tema Azul Britanico', '3', '2020-03-31', '17:20:24');
-INSERT INTO `log` VALUES ('28', 'Ha cambiado al tema Azul Britanico', '3', '2020-03-31', '17:20:26');
-INSERT INTO `log` VALUES ('29', 'Ha cambiado al tema CHyP', '3', '2020-03-31', '17:20:29');
-INSERT INTO `log` VALUES ('30', 'Ha cambiado al tema German Team', '3', '2020-03-31', '17:20:34');
-INSERT INTO `log` VALUES ('31', 'Ha cambiado al tema Hospital Linares', '3', '2020-03-31', '17:20:38');
-INSERT INTO `log` VALUES ('32', 'Ingreso al sistema', '3', '2020-03-31', '17:23:31');
-INSERT INTO `log` VALUES ('33', 'Ha cambiado al tema Cool', '3', '2020-03-31', '17:23:38');
-INSERT INTO `log` VALUES ('34', 'Ingreso al sistema', '3', '2020-03-31', '17:24:12');
-INSERT INTO `log` VALUES ('35', 'Ingreso al sistema', '3', '2020-03-31', '17:25:11');
-INSERT INTO `log` VALUES ('36', 'Ingreso al sistema', '3', '2020-03-31', '17:26:21');
-INSERT INTO `log` VALUES ('37', 'Salio del sistema', '3', '2020-03-31', '17:27:45');
-INSERT INTO `log` VALUES ('38', 'Ingreso al sistema', '3', '2020-03-31', '17:31:00');
-INSERT INTO `log` VALUES ('39', 'Ha cambiado al tema German Team', '3', '2020-03-31', '17:31:12');
-INSERT INTO `log` VALUES ('40', 'Ha cambiado al tema Cool', '3', '2020-03-31', '17:31:20');
-INSERT INTO `log` VALUES ('41', 'Ha cambiado al tema German Team', '3', '2020-03-31', '17:31:39');
-INSERT INTO `log` VALUES ('42', 'Salio del sistema', '3', '2020-03-31', '17:31:45');
-INSERT INTO `log` VALUES ('43', 'Ingreso al sistema', '3', '2020-03-31', '17:33:37');
-INSERT INTO `log` VALUES ('44', 'Ha cambiado al tema Cool', '3', '2020-03-31', '17:33:51');
-INSERT INTO `log` VALUES ('45', 'Ha cambiado al tema German Team', '3', '2020-03-31', '17:36:06');
-INSERT INTO `log` VALUES ('46', 'Salio del sistema', '3', '2020-03-31', '17:36:12');
-INSERT INTO `log` VALUES ('47', 'Ingreso al sistema', '3', '2020-03-31', '17:38:55');
-INSERT INTO `log` VALUES ('48', 'Ha cambiado al tema Cool', '3', '2020-03-31', '17:39:05');
+INSERT INTO `log` VALUES ('1', 'Salio del sistema', '2', '2020-04-01', '23:15:07');
+INSERT INTO `log` VALUES ('2', 'Ingreso al sistema', '3', '2020-04-02', '00:50:49');
+INSERT INTO `log` VALUES ('3', 'Ha cambiado al tema Chopes', '3', '2020-04-02', '00:50:56');
+INSERT INTO `log` VALUES ('4', 'Salio del sistema', '3', '2020-04-02', '00:51:03');
 
 -- ----------------------------
 -- Table structure for temas
 -- ----------------------------
 DROP TABLE IF EXISTS `temas`;
 CREATE TABLE `temas` (
-  `id_tema` int(11) NOT NULL auto_increment,
-  `nombre_tema` text,
-  `color_letra` text,
-  `color_base` text,
-  `color_base_fuerte` text,
-  `color_borde` text,
-  `fecha_registro` date default NULL,
-  `hora_registro` time default NULL,
-  `activo` int(11) default NULL,
-  PRIMARY KEY  (`id_tema`)
+  `id_tema` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre_tema` text DEFAULT NULL,
+  `color_letra` text DEFAULT NULL,
+  `color_base` text DEFAULT NULL,
+  `color_base_fuerte` text DEFAULT NULL,
+  `color_borde` text DEFAULT NULL,
+  `fecha_registro` date DEFAULT NULL,
+  `hora_registro` time DEFAULT NULL,
+  `activo` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_tema`)
 ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -210,26 +165,26 @@ INSERT INTO `temas` VALUES ('6', 'Warning Bootstrap', '#000', '#FFC107', '#6C757
 INSERT INTO `temas` VALUES ('7', 'Azul Britanico', '#fff', '#273c75', '#192a56', '#44bd32', '2020-03-28', '08:20:37', '1');
 INSERT INTO `temas` VALUES ('8', 'German Team', '#fff', '#f7b731', '#2C3A47', '#ff4757', '2020-03-30', '17:57:15', '1');
 INSERT INTO `temas` VALUES ('9', 'CHyP', '$fff', '#ff9ff3', '#f368e0', '#222f3e', '2020-03-31', '13:15:51', '1');
-INSERT INTO `temas` VALUES ('10', 'Cool', '#ffeaa7', '#6D214F\r\n', '#5758BB\r\n#8c7ae6', '#2f3542', '2020-03-31', '16:50:31', '1');
+INSERT INTO `temas` VALUES ('10', 'Chopes', '#d2dae2', '#4b4b4b', '#3d3d3d', '#ff3838', '2020-04-02', '00:50:33', '1');
 
 -- ----------------------------
 -- Table structure for usuarios
 -- ----------------------------
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
-  `id_usuario` int(11) NOT NULL auto_increment,
-  `id_dato` int(11) default NULL,
-  `id_tema` int(11) default NULL,
-  `nombre_usuario` text,
-  `contra` text,
-  `permiso_datos_persona` text,
-  `permiso_ecivil` text,
-  `permiso_usuario` text,
-  `permiso_temas` text,
-  `fecha_caducidad` date default NULL,
-  `fecha_registro` date default NULL,
-  `activo` int(11) default NULL,
-  PRIMARY KEY  (`id_usuario`)
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `id_dato` int(11) DEFAULT NULL,
+  `id_tema` int(11) DEFAULT NULL,
+  `nombre_usuario` text DEFAULT NULL,
+  `contra` text DEFAULT NULL,
+  `permiso_datos_persona` text DEFAULT NULL,
+  `permiso_ecivil` text DEFAULT NULL,
+  `permiso_usuario` text DEFAULT NULL,
+  `permiso_temas` text DEFAULT NULL,
+  `fecha_caducidad` date DEFAULT NULL,
+  `fecha_registro` date DEFAULT NULL,
+  `activo` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_usuario`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -237,4 +192,4 @@ CREATE TABLE `usuarios` (
 -- ----------------------------
 INSERT INTO `usuarios` VALUES ('1', '1', '7', 'doe', 'doe', 'si', 'si', 'si', 'si', '2021-03-26', '2020-03-27', '1');
 INSERT INTO `usuarios` VALUES ('2', '44', '2', 'paperez', '12345', 'no', 'no', 'no', 'no', '2021-03-29', '2020-03-29', '1');
-INSERT INTO `usuarios` VALUES ('3', '49', '10', 'eunice', '122309', 'si', 'si', 'si', 'si', '2021-03-30', '2020-03-03', '1');
+INSERT INTO `usuarios` VALUES ('3', '48', '10', 'chope', 'chope123', 'si', 'si', 'si', 'si', '2020-04-02', '2020-04-02', '1');
