@@ -130,23 +130,23 @@ $fecha=date("Y-m-d");
 
     </div>
 
+    <!-- Modal de contraseña -->
+        <?php include'../modales/modalcontra.php'; ?>
+    <!-- Modal de contraseña dentro del Sistema -->
+        <?php include'../modales/modalcontraInicio.php'; ?>
     <!-- Modal de carga -->
-        <?php include'../modales/modalCarga.php'; ?>
-    <!-- Modal de carga -->  
+        <?php include'../modales/modalCarga.php'; ?>    
     <!-- Modal de datos -->
         <?php include'../mDatosPersonales/modalDatos.php'; ?>
     <!-- Modal de datos -->
+    <!-- Modal de horario -->
+        <?php include'../mDatosPersonales/modalHorario.php'; ?>
+    <!-- Modal de horario -->
     <!-- Modal de Foto -->
         <?php include'../modales/modalFoto.php'; ?>
-    <!-- Modal de Foto -->
     <!-- Modal de PDF -->
         <?php include'../modales/modalPDF.php'; ?>
     <!-- Modal de PDF -->
-    <!-- Modal de cambio contraseña -->
-    <?php include'../modales/modalcontra.php'; ?>
-    
-    <!-- Modal de cambio contraseña en el sistema -->
-    <?php include'../modales/modalcontraInicio.php'; ?>
 
     <!-- jQuery -->
     <script src="../plugins/jQuery/jquery-3.3.1.js"></script>   
@@ -192,6 +192,8 @@ $fecha=date("Y-m-d");
     <script src="../plugins/popper/popper.min.js" type="text/javascript"></script>
     <!-- sweet alert -->
     <script src="../plugins/bootstrap-sweetalert-master/dist/sweetalert.js" type="text/javascript"></script>
+    <!-- MomentJS -->
+    <script src="../plugins/momentjs/moment-with-locales/moment-with-locales.min.js"></script> 
     <script>
         combo_ecivil();
         selectTwo();

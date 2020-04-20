@@ -156,7 +156,7 @@ function cssTema(h_sidebar,color_base,letra_color,color_borde){
         transition : 'background-color'+ duracion +' ease-in-out',
         "background-color": color_base,
         color: letra_color,
-        "border-bottom":'8px solid' + color_borde
+        "border-bottom":'8px solid' + color_borde,
     });
 
     $(".hTabla").css({
@@ -460,24 +460,25 @@ $('#scroll').click(function(){
     return false; 
 });
 
-// ------------------------------------------------------------------------------ //
+// ------------------------------------------------------------------------- //
 
-function cambiarPassword(){
+function cambiarContra(){
     var usuario    = $("#inicioIdusuario").val();
-    var ncontra = $("#contraN").val();
+    // var contra     = $("#loginContra").val();
+    var ncontra = $("#ConN").val();
     $.ajax({
-        url:"../mInicio/cambiarPass.php",
+        url:"../mInicio/cambiarContra.php",
         type:"POST",
         dateType:"html",
         data:{usuario,ncontra},
         success:function(respuesta){
-            alertify.success("<i class='fa fa-check fa-lg'>Contraseña actualizada</i>",1);
-            $("#contraN").val("");
-            $("#Vcontra").val("");
+            alertify.success("<i class='fa fa-check fa-lg'>La contraseña se ha cambiado con exito</i>",2);
+            $("#ConN").val("");
+            $("#reccn").val("");
             $("#inicioIdusuario").val("");
             $("#contentLogin").hide();
             $("#contentSistema").show();
-            $("#modalcontraInicio").modal("hide");
+            $("#modalContraInicio").modal("hide");
             $("#titular").text(persona);
         },
         error:function(xhr,status){
@@ -512,7 +513,7 @@ function cambiarPassword(){
     console.log(ncontra);
 }
 
-function generarcontraRandom(){
+function generarContraseña(){
     var tamanyo_password				=	8;			// definimos el tamaño que tendrá nuestro password
  
 			var caracteres_conseguidos			=	0;			// contador de los caracteres que hemos conseguido
@@ -637,17 +638,16 @@ function generarcontraRandom(){
 					password_definitivo	=	password_definitivo + array_caracteres[i];
                 }
                 
-                document.getElementById("contraN").value=password_definitivo;
-                document.getElementById("Vcontra").value=password_definitivo;
-                $('#letter').removeClass('invalid').addClass('valid');
-                $('#capital').removeClass('invalid').addClass('valid');
-                $('#number').removeClass('invalid').addClass('valid');
-                $('length').removeClass('invalidContra').addClass('validContra');
-                $('#car').removeClass('invalid').addClass('valid');
-                $('#conI').removeClass('validContra').addClass('invalidContra');
-                $("#Vcontra").removeAttr('disabled');
-                document.getElementById("Vcontra").focus();
-                $("#btnguardarConI").removeAttr('disabled');
+                document.getElementById("ConN").value=password_definitivo;
+                document.getElementById("RecCN").value=password_definitivo;
+                $('#letter').removeClass('invalidIni').addClass('validIni');
+                $('#capital').removeClass('invalidIni').addClass('validIni');
+                $('#number').removeClass('invalidIni').addClass('validIni');
+                $('#length').removeClass('invalidIni').addClass('validIni');
+                $('#car').removeClass('invalidIni').addClass('validIni');
+                $('#Con').removeClass('validIni').addClass('invalidIni');
+                $("#RecCN").removeAttr('disabled');
+                document.getElementById("RecCN").focus();
 
 }
 
@@ -655,20 +655,22 @@ $(document).ready(function() {
 
     var c;
     var o;
+    var n;
     var t;
     var r;
+    var a;
 
-    $("#contraN").keyup(function() {
-        var pass = $("#contraN").val();
-        var vpass = $("#Vcontra").val();
+    $("#ConN").keyup(function() {
+        var pass = $("#ConN").val();
+        var vpass = $("#RecCN").val();
         // set password variable
         var pswd = $(this).val();
         //validate the length
         if ( pswd.length < 8 ) {
-            $('length').removeClass('invalidContra').addClass('validContra');
+            $('#length').removeClass('validIni').addClass('invalidIni');
             c="";
         } else {
-            $('length').removeClass('validContra').addClass('invalidContra');
+            $('#length').removeClass('invalidIni').addClass('validIni');
             c=1;
         }
 
@@ -686,102 +688,103 @@ $(document).ready(function() {
             $('#number').removeClass('invalidIni').addClass('validIni');
             t=1;
         } else {
-            $('#number').removeClass('validIni').addClass('invalidIni');
+            $('#number').removeClass('validIni').addClass('invalid');
             t="";
         }
 
         //Validar contraseñas iguales
         if(pass == vpass){
-            $('#conI').removeClass('invalidContra').addClass('validContra');
+            $('#ConN').removeClass('invalidIni').addClass('validIni');
             r=1;
         } else {
-            $('#conI').removeClass('validContra').addClass('invalidContra');
+            $('#ConN').removeClass('validIni').addClass('invalidIni');
             r="";
         }
+            //Validar segundo campo
+            if((c+o+t)==3){
+                $("#RecCN").removeAttr('disabled');
+                document.getElementById("RecCN").focus();
 
-        //Validar segundo campo
-        if((c+o+t)==3){
-             $("#Vcontra").removeAttr('disabled');
+            }else{
+                $("#RecCN").attr("disabled","disabled");
+            }
+            //Validar que la contraseña cuente con todos los aspectos
+            //antes mencionados
+            if((c+o+t+r)==4){
+                $("#btnguardarCI").removeAttr('disabled');
+            }
 
-        }else{
-             $("#Vcontra").attr("disabled","disabled");
-        }
-        //Validar que la contraseña cuente con todos los aspectos
-        //antes mencionados
-        if((c+o+t+r)==4){                       
-            $("#btnguardarConI").removeAttr('disabled');
-        }
-        else{
-            $("#btnguardarConI").attr("disabled","disabled");
-        }
-        
+            else{
+                $("#btnguardarCI").attr("disabled","disabled");
+            }
     })
 });
 
-function comparePassword(){
-    var pass = $("#contraN").val();
-    var vpass = $("#Vcontra").val();
+function compareContra(){
+    var pass = $("#ConN").val();
+    var vpass = $("#RecCN").val();
     if(pass == vpass){
-        $("#btnguardarConI").removeAttr('disabled');
-        $('#conI').removeClass('invalidContra').addClass('validContra');
+        $("#btnguardarCI").removeAttr('disabled');
+        $('#ConN').removeClass('invalidIni').addClass('validIni');
     }
     else{
-        $("#btnguardarConI").attr("disabled","disabled");
-        $('#conI').removeClass('validContra').addClass('invalidContra');
+        $("#btnguardarCI").attr("disabled","disabled");
+        $('#ConN').removeClass('validIni').addClass('invalidIni');
     }
 }
 
-function mostrarContraIni(){
-    var valorBoton=$("#btnVerContraIni").val();
+function validarCamposContraseñasI(){
+    var tCaracteres;
+    cant=$("#ConN").val();
+    cant=cant.length;
+
+    vcant=$("#RecCN").val();
+    vcant=vcant.length;
+
+    tCaracteres= cant + vcant;
+
+    if (tCaracteres>0) {
+        $("#btnVerContraI").removeAttr("disabled");
+        if ($("#ConN").val()==$("#RecCN").val()) {
+            $("#ConN").css('background', 'rgba(46, 204, 113,0.2)');
+            $("#RecCN").css('background', 'rgba(46, 204, 113,0.2)');
+        } else {
+            $("#ConN").css('background', 'rgba(231, 76, 60,0.2)');
+            $("#RecCN").css('background', 'rgba(231, 76, 60,0.2)');
+        }
+    }else{
+        $("#btnVerContraI").attr("disabled","disabled");
+        $("#ConN").css('background', 'rgba(0, 0, 0,0)');
+        $("#RecCN").css('background', 'rgba(0, 0, 0,0)');
+    }
+}
+
+
+function mostrarContraI(){
+    var valorBoton=$("#btnVerContraI").val();
     if (valorBoton==0) {
-        $("#btnVerContraIni").val(1);
-        $("#icoVerContraIni").removeClass("far fa-eye-slash");
-        $("#icoVerContraIni").addClass("far fa-eye");
-        $("#contraN").attr('type', 'text');
-        $("#Vcontra").attr('type', 'text');
+        $("#btnVerContraI").val(1);
+        $("#icoVerContraI").removeClass("far fa-eye-slash");
+        $("#icoVerContraI").addClass("far fa-eye");
+        $("#ConN").attr('type', 'text');
+        $("#RecCN").attr('type', 'text');
     } else {
-        $("#btnVerContraIni").val(0);
-        $("#icoVerContraIni").removeClass("far fa-eye");
-        $("#icoVerContraIni").addClass("far fa-eye-slash");   
-        $("#contraN").attr('type', 'password');
-        $("#Vcontra").attr('type', 'password');    
+        $("#btnVerContraI").val(0);
+        $("#icoVerContraI").removeClass("far fa-eye");
+        $("#icoVerContraI").addClass("far fa-eye-slash");   
+        $("#ConN").attr('type', 'password');
+        $("#RecCN").attr('type', 'password');    
     }
 }
 
-$("#btnVerContraIni").click(function(){
-    mostrarContraIni();
+$("#btnVerContraI").click(function(){
+    mostrarContraI();
 });
 
-// function validarCamposContraseñasIni(){
-//     var tCaracteres;
-//     cant=$("#contraN").val();
-//     cant=cant.length;
+$("#ConN").keyup(function(){
+    validarCamposContraseñasI();
+});
 
-//     vcant=$("#Vcontra").val();
-//     vcant=vcant.length;
-
-//     tCaracteres= cant + vcant;
-
-//     if (tCaracteres>0) {
-//         $("#btnVerContraIni").removeAttr("disabled");
-//         if ($("#contraN").val()==$("#Vcontra").val()) {
-//             $("#contraN").css('background', 'rgba(46, 204, 113,0.2)');
-//             $("#Vcontra").css('background', 'rgba(46, 204, 113,0.2)');
-//         } else {
-//             $("#contraN").css('background', 'rgba(231, 76, 60,0.2)');
-//             $("#Vcontra").css('background', 'rgba(231, 76, 60,0.2)');
-//         }
-//     }else{
-//         $("#btnVerContraIni").attr("disabled","disabled");
-//         $("#contraN").css('background', 'rgba(0, 0, 0,0)');
-//         $("#Vcontra").css('background', 'rgba(0, 0, 0,0)');
-//     }
-// }
-
-// $("#contraN").keyup(function(){
-//     validarCamposContraseñasIni();
-// });
-
-// $("#Vcontra").keyup(function(){
-//     validarCamposContraseñasIni();
-// });
+$("#RecCN").keyup(function(){
+    validarCamposContraseñasI();
+});
